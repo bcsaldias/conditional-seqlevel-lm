@@ -54,7 +54,8 @@ def get_dataset(fix_length=100, lower=False, vectors=None, prepare_data=False):
                 dtype=torch.int64)
     
     meta_id = data.Field(
-                use_vocab=True, sequential=False, 
+                use_vocab=True, 
+                sequential=False, 
                 dtype=torch.int64)
     
     fields=[
