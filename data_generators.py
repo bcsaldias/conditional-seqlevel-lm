@@ -45,7 +45,6 @@ def get_dataset(fix_length=100, lower=False, vectors=None, prepare_data=False):
         lower = lower,
         init_token = '<sos>',
         eos_token = '<eos>',
-        
     )
     
     theme = data.Field(
@@ -79,8 +78,8 @@ def get_dataset(fix_length=100, lower=False, vectors=None, prepare_data=False):
     
     review_text.build_vocab(
         train, val, test,
-        max_size=30000,
-        min_freq=5,
+        max_size=20000,
+        min_freq=50,
         vectors=vectors
     )
 
@@ -95,7 +94,6 @@ def get_dataset(fix_length=100, lower=False, vectors=None, prepare_data=False):
         max_size=10,
         min_freq=0,
     )
-    
     
     LOGGER.debug("Done preparing the datasets")
     return train, val, test, review_text, theme
@@ -112,6 +110,7 @@ def get_iterator(dataset, batch_size, train=True, shuffle=True, repeat=False):
         sort_within_batch=False,
         sort=True
     )
+    
     return dataset_iter
 
 
